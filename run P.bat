@@ -1,0 +1,1 @@
+start /B python Pars_Cam.py

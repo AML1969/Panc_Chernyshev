@@ -33,7 +33,7 @@ def process_image():
                     boxes = res.boxes
                     for box in boxes:
                             #print(box)
-                            if int(box.cls[0]) == 1:
+                            if int(box.cls[0]) == 2:
                                 pars_img = cv2.imwrite(os.path.join(path_output_dir, '%d.png') % count, frame) # Сохраняет картинку если обнаружен 1й класс "gan"
                                 count += 1
                                 pass

@@ -1,6 +1,5 @@
 
 from fastapi import FastAPI, UploadFile, File
-from requests.utils import requote_uri
 import uvicorn                  # локальный host
 import nest_asyncio             # асинхронные функций
 import json
@@ -8,8 +7,9 @@ from io import BytesIO          # чтение файла в байтовом р
 from PIL import Image           # работа с изображениями
 from ultralytics import YOLO    # работа с моделью
 
-nest_asyncio.apply() # включить асинхронные функций
-app = FastAPI()      # создать экземпляр FastAPI
+nest_asyncio.apply()                       # включить асинхронные функций
+app = FastAPI()                            # создать экземпляр FastAPI
+
 
 @app.post("/uploaded_images")                             # команда для post-запроса
 async def uploaded_images(file: UploadFile = File(...)):  # функция для получения файла из post-запроса
@@ -37,7 +37,8 @@ def process_image(image_file):
                 gun += 1
     response = {"man": man, "gun": gun }
     
-    return {"status": "success", "response": json.dumps(response)}
+    return {"response": json.dumps(response)}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)  # запуск веб-приложений через локальный host
+
